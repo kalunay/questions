@@ -108,6 +108,9 @@ body {
 
 .top-bar-bar {
 	position: relative;
+	width: 100vw;
+	max-width: 100%;
+	display: flex;
 }
 
 .top-bar-statusbar {
