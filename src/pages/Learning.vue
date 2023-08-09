@@ -6,6 +6,10 @@ import { storeToRefs } from 'pinia';
 const rootStore = useRootStore();
 const { questions, activeQuestion } = storeToRefs(rootStore);
 
+function addQuestions(item){
+    rootStore.addQuestions(item);
+}
+
 </script>
 
 <template>
@@ -21,7 +25,14 @@ const { questions, activeQuestion } = storeToRefs(rootStore);
                 Tests
             </div>
             <div class="app-questions">
-                <div v-for="item in questions" :key="item.id" :class="((activeQuestion.includes(item.id)) ? 'active' : '')">{{ item.id }}</div>
+                <div 
+                    v-for="item in questions" 
+                    :key="item.id" 
+                    :class="((activeQuestion.includes(item.id)) ? 'active' : '')"
+                    @click="addQuestions(item.id)"
+                >
+                    {{ item.id }}
+                </div>
             </div>
 		</div>        
     </AppLayout>

@@ -4,7 +4,8 @@ import { useRootStore } from '../stores/root';
 import { storeToRefs } from 'pinia';
 
 const rootStore = useRootStore();
-const { questions } = storeToRefs(rootStore);
+const { questions, activeQuestion, width } = storeToRefs(rootStore);
+
 </script>
 
 <template>
@@ -32,7 +33,7 @@ const { questions } = storeToRefs(rootStore);
 					</div>
                     <router-link to="/learning"><img src="../assets/images/chevron-circle-right.svg"></router-link>
 				</div>
-				<div class="top-bar-info">112 questions out of {{ questions.length }} passed</div>
+				<div class="top-bar-info">{{ activeQuestion.length }} questions out of {{ questions.length }} passed</div>
 				<div class="top-bar-bar">
 					<div class="top-bar-statusbar">
 						<div>&nbsp;</div>
@@ -44,7 +45,7 @@ const { questions } = storeToRefs(rootStore);
 						<div>&nbsp;</div>
 					</div>
 
-					<div class="fill">
+					<div class="fill" v-bind:style="{width: width + '%'}">
 						<div class="top-bar-statusbar">
 							<div>&nbsp;</div>
 							<div>&nbsp;</div>
